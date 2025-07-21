@@ -1,0 +1,126 @@
+# Tinted-Theming Tmux Theme
+source-file /home/sirkex/gitclones/tinted-tmux/colors/base16-gruvbox-material-light-soft.conf
+
+# === Gruvbox Material Light Soft Palette ===
+
+# Palette 1 (backgrounds)
+bg_dim="#ebdbb2"
+bg0="#f2e5bc"
+bg1="#eddeb5"
+bg2="#ebdbb2"
+bg3="#e6d5ae"
+bg4="#dac9a5"
+bg5="#d5c4a1"
+bg_statusline1="#ebdbb2"
+bg_statusline2="#ebdbb2"
+bg_statusline3="#dac9a5"
+bg_diff_green="#dfe1b4"
+bg_visual_green="#d7d9ae"
+bg_diff_red="#f7d9b9"
+bg_visual_red="#efd2b3"
+bg_diff_blue="#dbddbf"
+bg_visual_blue="#d3d5b8"
+bg_visual_yellow="#f3deaa"
+bg_current_word="#ebdbb2"
+
+# Palette 2 (foregrounds and base colors)
+fg0="#654735"
+fg1="#4f3829"
+red="#c14a4a"
+orange="#c35e0a"
+yellow="#b47109"
+green="#6c782e"
+aqua="#4c7a5d"
+blue="#45707a"
+purple="#945e80"
+bg_red="#ae5858"
+bg_green="#6f8352"
+bg_yellow="#a96b2c"
+
+# Palette 3 (greys and special)
+grey0="#a89984"
+grey1="#928374"
+grey2="#7c6f64"
+none="default"
+
+# Binds and others
+unbind R
+bind R source-file ~/.tmux.conf
+set -g prefix M-f
+set -g mouse on
+
+# StatusBar options
+set-option -g status-position bottom
+set-option -g status-style "bg=${bg0}, fg=${fg0}"
+set-option -g window-status-separator ""
+set-option -g status-left "\
+	#[fg=${green},bg=${bg0}]\
+	#[fg=${bg0},bg=${green}]   #S   \
+	#[fg=${green},bg=${none}]\
+	"
+set-option -g status-right "\
+	#[fg=${green},bg=${none}]\
+	#[fg=${bg0},bg=${green}]   #h  \
+	#[fg=${green},bg=${bg0}]\
+	"
+set-option -g window-status-format "\
+	#[fg=${bg5},bg=${bg0}]\
+	#[fg=${fg0},bg=${bg5}] #I #W#{?window_flags,#{window_flags},  } \
+	#[fg=${bg5},bg=${bg0}]\
+	"
+set-option -g window-status-current-format "\
+	#[fg=${green},bg=${bg0}]\
+	#[fg=${bg0},bg=${green}] #I #W#{?window_flags,#{window_flags},  } \
+	#[fg=${green},bg=${bg0}]\
+	"
+# ALTERNMATE WINDOW STYLE
+#set-option -g window-status-format "\
+#	#[fg=${fg0},bg=${fg0}]\
+#	#[fg=${bg0},bg=${fg0}] #I #W#{?window_flags,#{window_flags},  } \
+#	#[fg=${fg0},bg=${fg0}]\
+#	"
+#set-option -g window-status-current-format "\
+#	#[fg=${bg0},bg=${fg0}]\
+#	#[fg=${fg0},bg=${bg0}] #I #W#{?window_flags,#{window_flags},  } \
+#	#[fg=${bg0},bg=${fg0}]\
+#	"
+set-option -g status-left-length 70
+set-option -g status-right-length 70
+set-option -g status-justify centre
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'wfxr/tmux-fzf-url'
+	set -g @fzf-url-bind 'X'
+# set -g @plugin 'tinted-theming/tinted-tmux'
+# 	set -g @tinted-color 'base16-gruvbox-material-light-soft'
+#set -g default-terminal "tmux-256color"
+set -g default-terminal "xterm-256color"
+	set -ag terminal-overrides ",xterm-256color:RGB"
+
+# Or use a wildcard instead of forcing a default mode.
+# Some users in the comments of this gist have reported that this work better.
+#set -sg terminal-overrides ",*:RGB"
+
+# You can also use the env variable set from the terminal.
+# Useful if you share your configuration betweeen systems with a varying value.
+#set -ag terminal-overrides ",$TERM:RGB"
+
+# ~/.tmux.conf
+
+#set -g @plugin 'egel/tmux-gruvbox'
+# set desired theme options...
+#set -g @tmux-gruvbox 'light256' # 'dark' or 'dark256', 'light', 'light256'
+#set -g @tmux-gruvbox-statusbar-alpha 'true'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
+# set -g @plugin 'git@github.com:user/plugin'
+# set -g @plugin 'git@bitbucket.com:user/plugin'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
