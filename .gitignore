@@ -25,3 +25,5 @@ nohup.out
 
 # others
 .bin
+
+.gitignore
